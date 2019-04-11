@@ -1,0 +1,4 @@
+@@ACTIONS:
+
+@CLASS_NAME					:#namespace#_#class#\
+@BEGIN_ACTION				:g++ -c #basePath#/Dictionaries/Cpp/ExternalLibraries/upng/upng.cpp -o #path#/upng.o

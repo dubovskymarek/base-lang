@@ -1,0 +1,87 @@
+@@GENERAL:
+
+@OUTPUT_FILE		:#path#/#name#.h
+
+@ONE_FILE_FOR_ONE_CLASS:YES
+
+@MAIN				:
+#code#
+
+@CLASS				:
+\#pragma once
+
+\#include <iostream>
+\#include <string>
+\#include <vector>
+\#include <unistd.h>
+
+\#ifndef UCHAR
+\#define UCHAR unsigned char
+\#endif
+
+\#define DETECT_XCODE
+
+\#include <float.h>
+
+using namespace std;
+
+#used classes#
+
+#if##parent##is not##null##then#
+	\#include "#parent path##parent name#.h"\n
+#end if#
+
+#if##class##is not##app class##then#
+	#if##parent##is##null##then#
+		class #class#\n
+	#else#
+		class #class# : public #parent#\n
+	#end if#
+	{
+	public:
+		#methods#
+	
+		static #class#* s_instance;
+		static #class#* s_Instance();
+		
+		int _type;
+		
+		#members#
+	};
+#end if#
+
+@USED				:class #class#;\n
+@VOID				:void
+@CLASS_NAME			:#path#_#class#
+@MEMBER				:
+#if##output##is##struct##then#
+	#output# #member#;
+#else#
+	#output#* #member#;
+#end if#
+
+@METHOD				:
+#if##method##is##Construct##then#
+	#class#(#inputs#);
+#else if##method##is##Destruct##then#
+	virtual ~#class#();
+#else#
+	#if##method##is##virtual##then#
+		virtual 
+	#end if#
+	#if##method##output##is##struct##or##method##output##is##null##then#
+		#output# #method#(#inputs#);
+	#else#
+		#output#* #method#(#inputs#);
+	#end if#
+#end if#
+
+@INPUT						:
+#if##input##is not##first##then#
+	, 
+#end if#
+#if##input##is##struct##then#
+	#output# #input#
+#else#
+	#output#* #input#
+#end if#

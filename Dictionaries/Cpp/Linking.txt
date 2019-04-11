@@ -1,0 +1,13 @@
+@@ACTIONS:
+
+@CLASS_NAME					:#namespace#_#class#\
+@CLASS_ACTION_OUTPUT_FILE	:#path#/#name#.o
+@CLASS_ACTION				:
+g++ -c #path#/#name#.cpp -o #path#/#name#.o
+#if##class##is##app class##or##class##is##GUI.Window##or##class##is##OpenGL##then#
+	 -I/System/Library/Frameworks/OpenGL.framework/Versions/Current/Headers -I/System/Library/Frameworks/GLUT.framework/Versions/Current/Headers
+#end if#
+@PRINT			:\n
+------#application class#------
+@END_ACTION		:sh #path#/#application#_linking.sh
+@END_ACTION		:#path#/#application#

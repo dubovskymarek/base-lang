@@ -1,0 +1,297 @@
+@@GENERAL:
+
+@ONE_FILE_FOR_ONE_CLASS:YES
+
+@OUTPUT_FILE		:#path#/#name#.cpp
+
+@MAIN				:
+#code#
+
+@CLASS				:
+#if##class##is##app class##then#
+	#if##class##used##GUI.Window##then#
+		#used classes#
+		
+		\#include "GUI/Rectangle.h"
+		\#include "utilities.h"
+		
+		\#pragma GCC diagnostic ignored "-Wdeprecated"
+
+		\#ifdef DETECT_XCODE
+			\#include <OpenGL/gl.h>
+			\#include <GLUT/glut.h>
+		\#else
+			\#include <gl.h>
+			\#include <glut.h>
+		\#endif
+		
+		#members#
+		
+		int main(int argc, char** argv)
+		{
+			glutInit(&argc, argv);
+			
+   			glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA | GLUT_STENCIL);
+			
+			#methods#
+			
+			glutMainLoop();
+			
+			delete app;
+			app = NULL;
+			
+			return 0;
+		}
+	#else#
+		#used classes#
+		
+		\#include "utilities.h"
+		
+		#members#
+		
+		int main(int argc, char* argv[])
+		{
+			#methods#
+			
+			delete app;
+			app = NULL;
+			
+			return 1;
+		}
+	#end if#
+#else#
+	\#include "#path##name#.h"
+	
+	\#include "utilities.h"
+		
+	#used classes#
+
+	using namespace std;
+	
+	#class#* #class#::s_instance = NULL;
+	#class#* #class#::s_Instance()
+	{
+		if(s_instance == NULL)
+			s_instance = new #class#();
+		return s_instance;
+	}
+
+	#methods#
+#end if#
+
+
+@VOID				:void
+@USED				:\#include "#path##name#.h"\n
+@CLASS_NAME			:#path#_#class#
+@MEMBER				:
+#if##class##is##app class##then#
+	#output#* #member# = NULL;
+#end if#
+@METHOD				:
+#if##class##is##app class##then#
+	#if##method##is##Main##then#
+		#code#
+	#end if#
+#else#
+	#if##method##is##Construct##then#
+		#if##parent##is##null##then#
+			#class#::#class#(#inputs#)
+			{
+				_type = #class id#;
+				#code#
+			}
+		#else#
+			#class#::#class#(#inputs#)
+			: #parent#(
+				#code#
+			}
+		#end if#
+	#else if##method##is##Destruct##then#
+		#class#::~#class#()
+		{
+			#code#
+			_type = 0;
+		}
+	#else if##output##is##struct##or##method##output##is##null##then#
+		#output# #class#::#method#(#inputs#)
+		{
+			#code#
+		}
+	#else#
+		#output#* #class#::#method#(#inputs#)
+		{
+			#code#
+		}
+	#end if#
+#end if#
+
+@INPUT				:
+#if##input##is not##first##then#
+	, 
+#end if#
+#if##input##is##struct##then#
+	#output# #input#
+#else#
+	#output#* #input#
+#end if#\
+
+@PARAM				:
+#if##param##is not##first##then#
+	, 
+#end if#
+#param#\
+
+@CONST_STRING		:"#value#"
+@CONST_NUM			:#value#
+@CONST_NULL			:NULL
+@CONST_YES			:true
+@CONST_NO			:false\
+
+@COMMAND			:
+#if##is##keyword##then#
+	#code#
+#else#
+	#code#;
+#end if#
+
+@COMMAND_PART		:
+#if##caller##output##is##struct##then#
+	#if##is##method##then#
+		#if##is##=&##then#
+			#if##param1##is##null##then#
+				#if##caller##output##has parent##Number##then#
+					#caller# = 0
+				#else if##caller##output##is##Float##then#
+					#caller# = 0.0f
+				#else if##caller##output##is##String##then#
+					#caller# = ""
+				#end if#
+			#else#
+				#caller# = #param1#
+			#end if#
+		#else if##is##operator##then#
+			#caller# #operator# (#param1#)
+		#else if##method##is##Destruct##then#
+			//
+		#else#
+			#caller#.#code#(#params#)
+		#end if#
+	#else if##is##namespace##then#
+		#caller#
+	#else#
+		#caller#.#code#
+	#end if#
+#else#
+	#if##is##method##then#
+		#if##is##=&##then#
+			#if##param1##is##null##then#
+				#caller# = NULL
+			#else if##caller##is##param1##then#
+				#caller# = #param1#
+			#else#
+				#caller# = (#output#*)#param1#
+			#end if#
+		#else if##is##==##and##param1##is##null##then#
+			#caller# == NULL
+		#else if##is##!=##and##param1##is##null##then#
+			#caller# != NULL
+		#else if##is##Construct##then#
+			#if##output##is##struct##then#
+				#if##params##count##is##0##then#
+					#caller#0
+				#else#
+					#caller##param1#
+				#end if#
+			#else if##caller##is##base##then#
+				#params#)
+			{
+				_type = #class id#
+			#else#
+				#caller#new #output#(#params#)
+			#end if#
+		#else if##is##Destruct##then#
+			#if##caller##is not##base##then#
+				delete #caller#
+			#end if#
+		#else if##caller##is##declared##and##is##=##then#
+			#caller# = #params#
+		#else if##caller####is##base##then#
+			#parent#::#code#(#params#)
+		#else#
+			#caller#->#code#(#params#)
+		#end if#
+	#else if##is##namespace##then#
+		#caller#
+	#else if##caller##is##null##then#
+		#if##is##object##and##is##declared##then#
+			#if##is##static##then#
+				#output#::s_Instance()
+			#else#
+				#if##output##is##struct##then#
+					#output# #code#
+				#else#
+					#output#* #code#
+				#end if#
+			#end if#
+		#else#
+			#code#
+		#end if#
+	#else#
+		#if##current class##is##app class##and##caller##is##this##then#
+			#code#
+		#else#
+			#caller#->#code#
+		#end if#
+	#end if#
+#end if#\
+
+@KEYWORD_IF			:
+#if##param1##last##is##method##and##param1##last##caller##output##is##struct##then#
+	if#param1#
+	{
+		#code#
+	}
+#else#
+	if(#param1#)
+	{
+		#code#
+	}
+#end if#
+
+@KEYWORD_ELSEIF		:
+#if##param1##last##is##method##and##param1##last##caller##output##is##struct##then#
+	else if#param1#
+	{
+		#code#
+	}
+#else#
+	else if(#param1#)
+	{
+		#code#
+	}
+#end if#
+
+@KEYWORD_ELSE		:
+else
+{
+	#code#
+}
+
+@KEYWORD_WHILE		:
+#if##param1##last##is##method##and##param1##last##caller##output##is##struct##then#
+	while#params#
+	{
+		#code#
+	}
+#else#
+	while(#params#)
+	{
+		#code#
+	}
+#end if#
+
+@KEYWORD_RETURN		:return #param1#;\n
+@KEYWORD_BREAK		:break;\n
+@KEYWORD_CONTINUE	:continue;\n
+@KEYWORD_IS			:(#caller# != NULL && #caller#->_type == #class id#)
+@KEYWORD_CENZURE	:return false;\n

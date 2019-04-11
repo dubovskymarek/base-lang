@@ -1,0 +1,16 @@
+@@GENERAL:
+
+@OUTPUT_FILE		:#path#/#name#_linking.sh
+@MAIN				:
+g++ -o #basePath#/Build/_#name#/Cpp/#name# #code#
+#if##class##used##GUI.Window##then#
+	 -framework OpenGL -framework GLUT
+#end if#
+#if##class##used##File.Reading##then#
+	 #basePath#/Build/_#name#/Cpp/upng.o
+#end if#
+#if##class##used##String##then#
+	 #basePath#/Build/_#name#/Cpp/utilities.o
+#end if#
+@CLASS				: #basePath#/Build/#application#/Cpp/#name#.o
+@CLASS_NAME			:#path#_#class#\

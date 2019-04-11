@@ -1,0 +1,4 @@
+@@ACTIONS:
+
+@CLASS_NAME					:#namespace#_#class#\
+@BEGIN_ACTION				:g++ -c #path#/utilities.cpp -o #path#/utilities.o
