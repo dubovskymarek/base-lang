@@ -1,4 +1,4 @@
-# base-lang©
+# base-lang ©
 Demo version of "base" programming language and compiler
 
 This project contains runtime version of experimental compiler for new programming language "base".<br/>
