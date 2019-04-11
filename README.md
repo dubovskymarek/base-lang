@@ -60,8 +60,10 @@ Variables:
 Objects:
 ```c
   SampleObject obj;
+  
   obj.SomeFunction();
   String str = obj.GetSomeStr();
+  
   SampleObject objRef = &obj;
   objRef.SomeFunction();
 ```
