@@ -16,8 +16,7 @@ Mac OS
 * Transformations - transforms code to lower level abstraction (replace keywords like as "for" to "while", etc.)
 
 <b>Building from source</b><br/>
-HelloWorld example is placed in BaseSources folder.
-Open terminal, and go to path where is placed compiler and just run these commands
+Open terminal, and go to base-lang-master and just run these commands
 
 ./base HelloWorld Cpp
 
