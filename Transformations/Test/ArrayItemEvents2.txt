@@ -1,0 +1,13 @@
+@@TransformationItemEvent:
+
+@NewItemEventMethod:
+
+code;
+
+@NewItemEventParentMethod:
+
+code;
+itemBase.ParentMethod(params);
+owner.MemberEvent(itemOwner.Index(itemThis), params);
+
+

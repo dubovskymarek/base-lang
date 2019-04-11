@@ -1,0 +1,24 @@
+@@TransformationMember:
+
+@TransformStruct:
+
+@Declaration:
+
+MemberClass init;
+
+@MemberConstruct.Member:
+
+member = init;
+
+@MemberConstruct.NewMember:
+
+member;
+
+
+
+
+
+
+
+
+

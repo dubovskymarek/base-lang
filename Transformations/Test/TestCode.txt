@@ -1,0 +1,16 @@
+@@TransformationCode:
+
+@Declaration:
+
+Object obj1;
+Object obj2;
+
+@Test1.Original:
+
+obj1 ##== obj2;
+
+@Test1.New:
+
+obj1 != obj2;
+
+

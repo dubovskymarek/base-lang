@@ -1,0 +1,18 @@
+@@TransformationCode:
+
+@RequiredClasses:
+
+template Type;
+
+@Declaration:
+
+Array<Type> array;
+Type item;
+
+
+@ArrayRegisterNew.Original:
+array.Add(#IsRegister#item);
+
+@ArrayRegisterNew.New:
+array.Add(item);
+

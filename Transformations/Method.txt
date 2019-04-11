@@ -1,0 +1,13 @@
+@@TransformationMethodCode:
+
+@Declaration:
+
+@Test.Original:
+code;
+
+@Test.New:
+Int start;
+code;
+Int end;
+
+

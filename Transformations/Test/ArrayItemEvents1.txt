@@ -1,0 +1,46 @@
+@@TransformationMember:
+
+
+@HasMemberItemEvent:	YES
+@MemberClassIs:		Array<Type>
+
+
+@Declaration:
+
+Number index;
+
+@IncludeOptClass1: ArrayItemEvents2.txt
+
+@NewOptionalClass1:
+
+OptOwner1Class1 ownerItem;
+OptOwner2Class1 owner;
+
+void Destruct()
+{
+	ownerItem = NULL;
+	owner = NULL;
+	base.Destruct();
+}
+
+@add.MemberDirect:
+
+member.?Add(?OptionalClass1(params));
+
+@add.NewMemberDirect:
+
+NewOptionalClass1 temp = &NewOptionalClass1(params);
+temp.owner = &this;
+temp.ownerItem = &member;
+member.Add(temp);
+
+
+
+
+
+
+
+
+
+
+

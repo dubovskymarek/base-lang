@@ -1,0 +1,13 @@
+@@TransformationInclude:
+
+@INCLUDE	:Members1.txt
+@INCLUDE	:StaticArray.txt
+@INCLUDE	:General.txt
+@INCLUDE	:Destructs2.txt
+@INCLUDE	:Destructs3.txt
+@INCLUDE	:MemberEvents1.txt
+@INCLUDE	:MemberEvents2.txt
+@INCLUDE	:ItemEvents1.txt
+@INCLUDE	:ItemEvents2.txt
+@INCLUDE	:Members2.txt
+@INCLUDE	:Methods2.txt

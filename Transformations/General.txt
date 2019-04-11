@@ -1,0 +1,90 @@
+@@TransformationCode:
+
+@MoveCallerMethodBeforeCallingMethod:	YES
+@MoveMethodParamBeforeMethod:			YES
+@InsertEmptyConstructIfNotExist:		YES
+
+@RequiredClasses:
+
+template Type3431;// isInheritedFrom Object;
+
+@Declaration:
+
+Number index;
+Number from;
+Number to;
+
+Array<Type3431> array;
+Type3431 item;
+
+String string;
+Byte c;
+
+Type3431 returnValue123;
+
+
+@ForeachInterval.Original:
+
+for(#IsDeclared# index => from:to)
+{
+	code;
+}
+
+@ForeachInterval.New:
+
+#IsDeclared# index = from;
+while(index <= to)
+{
+	code;
+	index += 1;
+}
+
+
+@ForeachArray.Original:
+
+for(#IsDeclared# item => array)
+{
+	code;
+}
+
+@ForeachArray.New:
+
+Int i = 1;
+while(i <= array.Count())
+{
+	#IsDeclared# item = &array.Item(i);
+	code;
+	i += 1;
+}
+
+@ForeachString.Original:
+
+for(#IsDeclared# c => string)
+{
+	code;
+}
+
+@ForeachString.New:
+
+Int i = 0;
+while(i < string.Length())
+{
+	#IsDeclared# c = &string.At(i);
+	code;
+	i += 1;
+}
+
+
+@Return.Original:
+
+code1;
+return #IsNotConstant|IsNotPureObject#returnValue123;
+code2;
+
+@Return.New:
+
+code1;
+Type3431 ret = &returnValue123;
+return ret;
+code2;
+

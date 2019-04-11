@@ -1,0 +1,74 @@
+@@TransformationAdvancedMember:
+
+
+@HasMemberEvent: YES
+
+@OneMemberToOneInstance: NO
+
+@VirtualMemberEvents: YES
+
+
+@Declaration:
+
+MemberClass instance;
+
+
+@NewMemberBaseClass:
+
+Array<OwnerClass> $owners = Array<OwnerClass>();
+Array<Int> $indexs = Array<Int>();
+
+@assignRef.MemberDirect:
+
+member ##= &#IsNotNull#instance;
+
+@assignRef.NewMemberDirect:
+
+//if(member != NULL)
+//{
+//	member.$owners.RemoveItem(memberOwner);
+//}
+member = &instance;
+if(member != NULL)
+{
+	member.$owners.Add(memberOwner);
+	member.$indexs.Add(memberIndex);
+}
+
+
+@assignNull.MemberDirect:
+
+member ##= &NULL;
+
+
+@assignNull.NewMemberDirect:
+
+//if(member != NULL)
+//{
+//	Int index = member.$owners.Index(memberOwner);
+//	member.$owners.Remove(index);
+//	member.$indexs.Remove(index);
+//}
+member = &NULL;
+
+
+@MemberEventBegin:
+
+
+@MemberEventEnd:
+
+Int i = 1;
+while(i <= member.$owners.Count())
+{
+	OwnerClass owner = member.$owners.Item(i);
+	Int index = member.$indexs.Item(i);
+	
+	if(index == memberIndex)
+	{
+		owner.MemberEvent(params);
+	}
+	i += 1;
+}
+
+
+

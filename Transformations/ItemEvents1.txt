@@ -1,0 +1,73 @@
+@@TransformationAdvancedMember:
+
+
+@HasItemEvent: YES
+
+@OneMemberToOneInstance: NO
+
+@VirtualItemEvents: YES
+
+
+@Declaration:
+
+MemberClass instance;
+
+
+@NewMemberBaseClass:
+
+Array<OwnerClass> $owners;
+
+
+@NewItemBaseClass:
+
+Array<ItemOwnerClass> $arrays = NULL;
+
+
+@assignRef.MemberDirect:
+
+member ##= &instance;
+
+
+@assignRef.NewMemberDirect:
+
+//if(member != NULL)
+//{
+//	member.$owners.RemoveItem(memberOwner);
+//}
+member = &instance;
+if(member != NULL)
+{
+	member.$owners.Add(memberOwner);
+}
+
+
+@ItemEventRegister:
+
+Console += "Register:";
+item.$arrays.Add(member);
+
+
+@ItemEventUnregister:
+
+Console += "Unregister:";
+item.$arrays.Remove(member);
+
+
+@ItemEventEnd:
+
+Console += "ItemEvents1";
+Int i = 0;
+while(i < item.$arrays.Count())
+{
+	ItemOwnerClass array = &item.$arrays.Item(i);
+
+	Int j = 0;
+	while(j < array.$owners.Count())
+	{
+		OwnerClass owner = &array.$owners.Item(i);
+		owner.ItemEvent(array.InverseItemMethod(item), params);
+		j += 1;
+	}
+	i += 1;
+}
+

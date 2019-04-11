@@ -1,0 +1,72 @@
+@@TransformationAdvancedMember:
+
+@TransformStruct:
+
+@Declaration:
+
+MemberClass init;
+
+
+
+@MemberConstruct1.Member:
+
+member;
+
+@MemberConstruct1.Construct:
+
+member = &MemberClass();
+code;
+
+@MemberConstruct1.Destruct:
+
+code;
+member = &NULL;
+
+
+
+@MemberConstruct2.Member:
+
+member = #IsNotStaticArray# init;
+
+@MemberConstruct2.NewMember:
+
+member;
+
+@MemberConstruct2.Construct:
+
+member = &init;
+code;
+
+@MemberConstruct2.Destruct:
+
+code;
+member = &NULL;
+
+
+
+@MemberConstruct3.Member:
+
+member = #IsStaticArray# init;
+
+@MemberConstruct3.NewMember:
+
+member;
+
+@MemberConstruct3.Construct:
+
+member = &MemberClass();
+code;
+
+@MemberConstruct3.Destruct:
+
+code;
+member = &NULL;
+
+
+
+
+
+
+
+
+

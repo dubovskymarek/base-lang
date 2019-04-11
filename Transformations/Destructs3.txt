@@ -1,0 +1,198 @@
+@@TransformationAdvancedMember:
+
+@RequiredClasses:
+
+//template ArrayTypeYYY;
+template ItemTypeYYY;
+
+@Declaration:
+
+Int index;
+Object object;
+//ArrayTypeYYY array;
+Array<ItemTypeYYY> array;
+ItemTypeYYY item;
+
+
+@Add.Original:
+#HasDynamicHelpMember# array.##Add(item);
+
+@Add.New:
+ItemTypeYYY adding = &item;
+array.Add(adding);
+if(adding != NULL)
+{
+	adding.#AcceptNameIncrementedNumber#referenceCounter += 1;
+}
+
+
+@Insert.Original:
+#HasDynamicHelpMember# array.##Insert(index, item);
+
+@Insert.New:
+ItemTypeYYY inserting = &item;
+array.Insert(index, inserting);
+if(inserting != NULL)
+{
+	inserting.#AcceptNameIncrementedNumber#referenceCounter += 1;
+}
+
+
+@Set.Original:
+#HasDynamicHelpMember# array.##Set(index, item);
+
+@Set.New:
+ItemTypeYYY removing = &array.Item(index);
+if(removing != NULL)
+{
+	removing.#AcceptNameIncrementedNumber#referenceCounter -= 1;
+	if(removing.#AcceptNameIncrementedNumber#referenceCounter == 0)
+	{
+		removing.Destruct();
+		removing = &NULL;
+	}
+}
+ItemTypeYYY inserting = &item;
+array.Set(index, inserting);
+if(inserting != NULL)
+{
+	inserting.#AcceptNameIncrementedNumber#referenceCounter += 1;
+}
+
+
+@Remove.Original:
+#HasDynamicHelpMember# array.##Remove(index);
+
+@Remove.New:
+ItemTypeYYY removing = &array.Item(index);
+array.Remove(index);
+if(removing != NULL)
+{
+	removing.#AcceptNameIncrementedNumber#referenceCounter -= 1;
+	if(removing.#AcceptNameIncrementedNumber#referenceCounter == 0)
+	{
+		removing.Destruct();
+		removing = &NULL;
+	}
+}
+
+
+@RemoveItem.Original:
+#HasDynamicHelpMember# array.##RemoveItem(item);
+
+@RemoveItem.New:
+ItemTypeYYY removing = &item;
+array.RemoveItem(removing);
+if(removing != NULL)
+{
+	removing.#AcceptNameIncrementedNumber#referenceCounter -= 1;
+	if(removing.#AcceptNameIncrementedNumber#referenceCounter == 0)
+	{
+		removing.Destruct();
+		removing = &NULL;
+	}
+}
+
+
+@RemoveFirst.Original:
+#HasDynamicHelpMember# array.##RemoveFirst();
+
+@RemoveFirst.New:
+ItemTypeYYY removing = &array.First();
+array.RemoveFirst();
+if(removing != NULL)
+{
+	removing.#AcceptNameIncrementedNumber#referenceCounter -= 1;
+	if(removing.#AcceptNameIncrementedNumber#referenceCounter == 0)
+	{
+		removing.Destruct();
+		removing = &NULL;
+	}
+}
+
+
+@RemoveLast.Original:
+#HasDynamicHelpMember# array.##RemoveLast();
+
+@RemoveLast.New:
+ItemTypeYYY removing = &array.Last();
+array.RemoveLast();
+if(removing != NULL)
+{
+	removing.#AcceptNameIncrementedNumber#referenceCounter -= 1;
+	if(removing.#AcceptNameIncrementedNumber#referenceCounter == 0)
+	{
+		removing.Destruct();
+		removing = &NULL;
+	}
+}
+
+
+@Clear.Original:
+#HasDynamicHelpMember# array.##Clear();
+
+@Clear.New:
+Int i = 1;
+while(i <= array.Count())
+{
+	ItemTypeYYY removing = &array.Item(i);
+	if(removing != NULL)
+	{
+		removing.#AcceptNameIncrementedNumber#referenceCounter -= 1;
+		if(removing.#AcceptNameIncrementedNumber#referenceCounter == 0)
+		{
+			removing.Destruct();
+			removing = &NULL;
+		}
+	}
+	i += 1;
+}
+array.Clear();
+
+
+@RemoveAll.Original:
+#HasDynamicHelpMember# array.##Clear();
+
+@RemoveAll.New:
+Int i = 1;
+while(i <= array.Count())
+{
+	ItemTypeYYY removing = &array.Item(i);
+	if(removing != NULL)
+	{
+		removing.#AcceptNameIncrementedNumber#referenceCounter -= 1;
+		if(removing.#AcceptNameIncrementedNumber#referenceCounter == 0)
+		{
+			removing.Destruct();
+			removing = &NULL;
+		}
+	}
+	i += 1;
+}
+array.RemoveAll();
+
+@Delete.Original:
+#HasDynamicHelpMember# array.##Destruct();
+
+@Delete.New:
+Int i = 1;
+while(i <= array.Count())
+{
+	ItemTypeYYY removing = &array.Item(i);
+	if(removing != NULL)
+	{
+		removing.#AcceptNameIncrementedNumber#referenceCounter -= 1;
+		if(removing.#AcceptNameIncrementedNumber#referenceCounter == 0)
+		{
+			removing.Destruct();
+			removing = &NULL;
+		}
+	}
+	i += 1;
+}
+array.Clear();
+array.Destruct()
+
+
+
+

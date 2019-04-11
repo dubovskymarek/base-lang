@@ -1,0 +1,63 @@
+@@TransformationAdvancedMember:
+
+
+@HasMemberEvent: YES
+
+@OneMemberToOneInstance: YES
+
+@VirtualMemberEvents: YES
+
+
+@Declaration:
+
+MemberClass instance;
+
+
+@NewMemberBaseClass:
+
+OwnerClass $owner = NULL;
+Int $index;
+
+@assignRef.MemberDirect:
+
+member ##= &#IsNotNull#instance;
+
+
+@assignRef.NewMemberDirect:
+
+member = &instance;
+member.$owner = &memberOwner;
+member.$index = memberIndex;
+
+
+@assignNull.MemberDirect:
+
+member ##= &NULL;
+
+
+@assignNull.NewMemberDirect:
+
+//if(member != NULL)
+//{
+//	member.$owner = &NULL;
+//	member.$index = 0;
+//}
+member = &NULL;
+
+
+@MemberEventBegin:
+
+//Console += "Begin";
+//member.$owner.MemberEvent(params);
+
+
+@MemberEventEnd:
+
+if(member.$owner != NULL && member.$index == memberIndex)
+{
+	member.$owner.MemberEvent(params);
+	//Console += "End";
+}
+
+
+

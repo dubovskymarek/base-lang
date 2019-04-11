@@ -1,0 +1,13 @@
+@@TransformationMemberEvent:
+
+@NewMemberEventMethod:
+
+code;
+
+@NewMemberEventParentMethod:
+
+code;
+memberBase.ParentMethod(params);
+owner.MemberEvent(params);
+
+

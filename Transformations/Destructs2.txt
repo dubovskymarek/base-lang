@@ -1,0 +1,198 @@
+@@TransformationAdvancedMember:
+
+@GenerateReferenceCounters:
+
+@RequiredClasses:
+
+template Type;
+
+@Declaration:
+
+MemberClass instance;
+Object item;
+Array<Type> array;
+Number index;
+
+@MemberBaseClass		:Instance
+
+@NewMemberBaseClass:
+
+Int referenceCounter;
+
+
+@AssignRefNull.MemberDirect:
+
+#IsDynamic|IsNotInit# member ##= & #IsNull#instance;
+
+@AssignRefNull.NewMemberDirect:
+
+if(member != NULL)
+{
+	member.referenceCounter -= 1;
+	if(member.referenceCounter == 0)
+	{
+		member.Destruct();
+	}
+	member = &NULL;
+}
+
+@InitOfDynamic1.MemberDirect:
+
+#IsDynamic|IsInit# member ##= & #IsConstruct#instance;
+
+@InitOfDynamic1.NewMemberDirect:
+member = &instance;
+member.referenceCounter += 1;
+
+
+@UninitOfNotDynamicClass.MemberDirect:
+
+#IsNotDynamic|IsClass|IsNotInit|IsNotSwap|IsNotDeclared# member ##= &instance;
+
+@UninitOfNotDynamicClass.NewMemberDirect:
+
+member.Destruct();
+member = &instance;
+
+
+@InitOfDynamic2.MemberDirect:
+
+#IsDynamic|IsInit# member ##= & #IsNotNull|IsNotConstruct#instance;
+
+@InitOfDynamic2.NewMemberDirect:
+member = &instance;
+if(member != NULL)
+{
+	member.referenceCounter += 1;
+}
+
+
+
+@AssignRef.MemberDirect:
+
+#IsDynamic|IsNotInit# member ##= & #IsNotNull#instance;
+
+@AssignRef.NewMemberDirect:
+
+if(member != NULL)
+{
+	member.referenceCounter -= 1;
+	if(member.referenceCounter == 0)
+	{
+		member.Destruct();
+	}
+}
+member = &instance;
+if(member != NULL)
+{
+	member.referenceCounter += 1;
+}
+
+
+
+@InitOfDynamicLocalConstruct.LocalDirect:
+
+#IsDynamic|IsDeclared# local ##= & #IsConstruct#instance;
+
+@InitOfDynamicLocalConstruct.NewLocalDirect:
+
+#IsDeclared# local = &instance;
+local.referenceCounter += 1;
+
+@InitOfDynamicLocal.LocalDirect:
+
+#IsDynamic|IsDeclared# local ##= & #IsNotNull|IsNotConstruct#instance;
+
+@InitOfDynamicLocal.NewLocalDirect:
+
+#IsDeclared# local = &instance;
+local.referenceCounter += 1;
+
+
+@UninitOfDynamicLocal.LocalDirect:
+
+#IsDynamic|IsNotDeclared# local ##= &NULL;
+
+@UninitOfDynamicLocal.NewLocalDirect:
+
+if(local != NULL)
+{
+	local.referenceCounter -= 1;
+	if(local.referenceCounter == 0)
+	{
+		local.Destruct();
+	}
+	local = &NULL;
+}
+
+
+
+@AssignRef.LocalDirect:
+
+#IsDynamic|IsNotDeclared# local ##= &#IsNotConstant#instance;
+
+@AssignRef.NewLocalDirect:
+
+if(local != NULL)
+{
+	local.referenceCounter -= 1;
+	if(local.referenceCounter == 0)
+	{
+		local.Destruct();
+	}
+}
+local = &instance;
+if(local != NULL)
+{
+	local.referenceCounter += 1;
+}
+
+
+@UninitOfNotdynamicLocal1.LocalDirect:
+
+#IsNotDynamic|IsNotSwap|ObjThatInitToConstruct|IsNotMovingToDynamic|IsNotLocalMovingToArray# local ##= &NULL;
+
+@UninitOfNotdynamicLocal1.NewLocalDirect:
+
+local.Destruct();
+local = &NULL;
+
+
+
+@ArrayRegisterLocalNew.LocalDirect:
+array.##Add(#IsDynamic|IsClass|IsRegister#local);
+
+@ArrayRegisterLocalNew.NewLocalDirect:
+array.Add(local);
+if(local != NULL)
+{
+	local.referenceCounter += 1;
+}
+
+
+@ArrayUnregisterLocalOld.LocalDirect:
+array.##Remove(#IsDynamic|IsClass|IsUnregister#local);
+
+@ArrayUnregisterLocalOld.NewLocalDirect:
+array.Remove(local);
+if(local != NULL)
+{
+	local.referenceCounter -= 1;
+	if(local.referenceCounter == 0)
+	{
+		local.Destruct();
+	}
+}
+
+@ArrayUnregisterNotDynamicLocalOld.LocalDirect:
+array.##Remove(#IsNotDynamic|IsClass|IsUnregister#local);
+
+@ArrayUnregisterNotDynamicLocalOld.NewLocalDirect:
+array.Remove(local);
+if(local != NULL)
+{
+	local.Destruct();
+}
+
+
+

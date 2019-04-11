@@ -1,0 +1,17 @@
+@@TransformationMethodCode:
+
+@Declaration:
+
+@ORIGINAL.Construct:
+code;
+
+@NEW.Construct:
+base.Construct(params);
+code;
+
+@ORIGINAL.Destruct:
+code;
+
+@NEW.Destruct:
+code;
+base.Destruct();

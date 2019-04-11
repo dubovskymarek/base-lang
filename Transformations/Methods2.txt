@@ -1,0 +1,14 @@
+@@TransformationMethodCode:
+
+@Declaration:
+
+@ORIGINAL.Construct:
+code1;
+##base.Construct();
+code2;
+
+@NEW.Construct:
+base.Construct();
+code1;
+code2;
+

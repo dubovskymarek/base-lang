@@ -1,0 +1,25 @@
+@@TransformationAdvancedMember:
+
+
+@Int.Member:
+
+member = 0;
+
+
+@Int.Construct:
+
+member = 0;
+code;
+
+
+@Object.Member:
+
+member = NULL;
+
+
+@Object.Construct:
+
+member = NULL;
+code;
+
+

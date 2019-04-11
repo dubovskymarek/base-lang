@@ -1,0 +1,50 @@
+@@TransformationCode:
+
+@RequiredClasses:
+
+template Type;
+template ArrayType;
+template OtherType;
+
+@Declaration:
+
+ArrayType array1;
+Array<Type> array2;
+OtherType local;
+Type item;
+
+
+
+@StaticArray1.Original:
+
+#IsDeclared# array1 = &{item};
+
+@StaticArray1.New:
+#IsDeclared# array1 = &ArrayType();
+
+@StaticArray1.NewItem:
+
+array1.Add(item);
+
+
+
+@StaticArray2.Original:
+
+array2 = {item};
+
+@StaticArray2.New:
+array2.Clear();
+
+@StaticArray2.NewItem:
+
+array2.Add(item);
+
+
+
+@StaticArray3.Original:
+
+#IsDeclared|IsNotInFor# local;
+
+@StaticArray3.New:
+
+#IsDeclared# local = &OtherType();
