@@ -104,11 +104,11 @@ Loops:
   {
     if(k == 5)
     {
-      break;
+      continue;
     }
     elseif(k == 6)
     {
-      continue;
+      break;
     }
     ...
   }
