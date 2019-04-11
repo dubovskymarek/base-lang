@@ -57,6 +57,15 @@ Variables:
   Bool b = YES;
 ```
 
+Objects:
+```c
+  SampleObject obj;
+  obj.SomeFunction();
+  String str = obj.GetSomeStr();
+  SampleObject objRef = &obj;
+  objRef.SomeFunction();
+```
+
 Basic print:
 ```c
   Console += "abc";
