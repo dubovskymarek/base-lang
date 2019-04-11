@@ -1,0 +1,20 @@
+@@INCLUDES:
+
+@INCLUDE	:HTML/Classes/Bool
+@INCLUDE	:HTML/Classes/Number
+@INCLUDE	:HTML/Classes/Byte
+@INCLUDE	:HTML/Classes/Console
+@INCLUDE	:HTML/Classes/Float
+@INCLUDE	:HTML/Classes/Int
+@INCLUDE	:HTML/Classes/Short
+@INCLUDE	:HTML/Classes/String
+@INCLUDE	:HTML/Classes/EnumInt
+@INCLUDE	:HTML/Classes/Pointer
+@INCLUDE	:HTML/Classes/Array
+@INCLUDE	:HTML/Classes/Math
+
+@INCLUDE	:HTML/Sources
+
+@INCLUDE	:HTML/Scripts
+
+
