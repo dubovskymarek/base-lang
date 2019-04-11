@@ -32,8 +32,8 @@ HTML open Safari and print Hello world example
 <b>Credits</b><br/>
 "base" compiler was developed by Marek Dubovsky dubovskymarek@icloud.com<br/>
 
-<b>Examples</b><br/>
-<p>Simple hello world app.</p>
+<b>Very quick introduction</b><br/>
+Simple hello world app:
 
 ```c
 /// 
@@ -47,7 +47,6 @@ void Construct()
 }
 ```
 
-<b>Quick view of "base"</b><br/>
 Variables:
 ```c
   Int i = 123;
