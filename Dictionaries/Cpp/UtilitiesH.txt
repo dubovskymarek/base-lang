@@ -1,0 +1,18 @@
+@@GENERAL:
+
+@OUTPUT_FILE		:#path#/utilities.h
+@CLASS_NAME			:#path#_#class#
+@MAIN				:
+
+\#pragma once
+
+\#include <iostream>
+\#include <string>
+\#include <vector>
+\#include <unistd.h>
+
+using namespace std;
+
+class _Array_String;
+
+_Array_String* ulitities_split(string text, string separator);

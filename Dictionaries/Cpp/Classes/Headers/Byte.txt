@@ -1,0 +1,4 @@
+@@CLASS:
+
+@NAME				:Byte
+@CLASS_NAME			:UCHAR

@@ -1,0 +1,39 @@
+@@INCLUDES:
+
+@INCLUDE	:Cpp/BeforeLinking
+@INCLUDE	:Cpp/Libraries1
+
+@INCLUDE	:Cpp/Classes/Headers/Bool
+@INCLUDE	:Cpp/Classes/Headers/Number
+@INCLUDE	:Cpp/Classes/Headers/Byte
+@INCLUDE	:Cpp/Classes/Headers/Console
+@INCLUDE	:Cpp/Classes/Headers/Float
+@INCLUDE	:Cpp/Classes/Headers/Int
+@INCLUDE	:Cpp/Classes/Headers/Short
+@INCLUDE	:Cpp/Classes/Headers/String
+@INCLUDE	:Cpp/Classes/Headers/EnumInt
+@INCLUDE	:Cpp/Classes/Headers/Array
+@INCLUDE	:Cpp/Classes/Headers/Math
+@INCLUDE	:Cpp/Headers
+@INCLUDE	:Cpp/UtilitiesH
+
+@INCLUDE	:Cpp/Classes/Source/Bool
+@INCLUDE	:Cpp/Classes/Source/Number
+@INCLUDE	:Cpp/Classes/Source/Byte
+@INCLUDE	:Cpp/Classes/Source/Console
+@INCLUDE	:Cpp/Classes/Source/Float
+@INCLUDE	:Cpp/Classes/Source/Int
+@INCLUDE	:Cpp/Classes/Source/Short
+@INCLUDE	:Cpp/Classes/Source/String
+@INCLUDE	:Cpp/Classes/Source/EnumInt
+@INCLUDE	:Cpp/Classes/Source/Array
+@INCLUDE	:Cpp/Classes/Source/Math
+@INCLUDE	:Cpp/Sources
+@INCLUDE	:Cpp/UtilitiesCpp
+
+@INCLUDE	:Cpp/Libraries2
+
+@INCLUDE	:Cpp/Linking
+
+
+

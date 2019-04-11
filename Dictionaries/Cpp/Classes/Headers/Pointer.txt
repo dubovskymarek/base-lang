@@ -1,0 +1,4 @@
+@@CLASS:
+
+@NAME				:Pointer
+@CLASS_NAME			:void*

@@ -1,0 +1,29 @@
+@@CLASS:
+
+@NAME				:Bool
+
+@METHOD.Construct	:
+#if##caller##is not##null##then#
+	#caller# = false
+#else if##params##count##is##0##then#
+	false
+#else#
+	#param1#
+#end if#
+@METHOD.Destruct	:#caller# = false
+@METHOD.=			:#caller# = #param1#
+@METHOD.&=			:#caller# &= #param1#
+@METHOD.|=			:#caller# |= #param1#
+@METHOD.Switch		:#caller# != #parent#
+@METHOD.==			:(#caller# === #param1#)
+@METHOD.!=			:(#caller# !== #param1#)
+@METHOD.&&			:(#caller# && #param1#)
+@METHOD.||			:(#caller# || #param1#)
+@METHOD.ToByte		:(((#caller#) % 256 + 256) % 256)
+@METHOD.ToShort		:(((#caller#) % 65536 + 65536) % 65536)
+@METHOD.ToInt		:(((#caller#) % 2147483648 + 2147483648) % 2147483648)
+@METHOD.ToFloat		:(0.0 + (#caller#))
+@METHOD.ToString	:("" + (#caller#))
+
+
+

@@ -1,0 +1,6 @@
+@@CLASS:
+
+@NAME				:Float
+@CLASS_NAME			:float
+
+

@@ -1,0 +1,30 @@
+@@GENERAL:
+
+@OUTPUT_FILE		:#path#/utilities.cpp
+@CLASS_NAME			:#path#_#class#
+@MAIN				:
+
+\#include "utilities.h"
+\#include "Array_String.h"
+
+using namespace std;
+
+_Array_String* ulitities_split(string text, string separator)
+{
+	_Array_String* tokens = new _Array_String();
+	
+    std::size_t start = 0, end = 0;
+    while((end = text.find(separator, start)) != std::string::npos)
+    {
+        if(end != start)
+        {
+        	tokens->Add(text.substr(start, end - start));
+        }
+        start = end + 1;
+    }
+    if(end != start)
+    {
+       tokens->Add(text.substr(start));
+    }
+    return tokens;
+}

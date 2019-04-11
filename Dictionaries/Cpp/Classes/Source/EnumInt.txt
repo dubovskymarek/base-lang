@@ -1,0 +1,26 @@
+@@CLASS:
+
+@NAME				:EnumInt
+@CLASS_NAME			:int
+
+@METHOD.Construct	:#caller#0
+@METHOD.Construct	:
+#if##caller##is not##null##then#
+	#caller# = 0
+#else if##params##count##is##0##then#
+	0
+#else#
+	#param1#
+#end if#
+@METHOD.Destruct	:#caller# = 0
+@METHOD.=			:#caller# = #param1#
+@METHOD.==			:(#caller# == #param1#)
+@METHOD.!=			:(#caller# != #param1#)
+@METHOD.|			:(#caller# | #param1#)
+@METHOD.&			:(#caller# & #param1#)
+@METHOD.ToBool		:(bool)(#caller#)
+@METHOD.ToByte		:(UCHAR)(#caller#)
+@METHOD.ToInt		:(int)(#caller#)
+@METHOD.ToShort		:(short)(#caller#)
+@METHOD.ToFloat		:(float)(#caller#)
+@METHOD.ToString	:to_string(#caller#)

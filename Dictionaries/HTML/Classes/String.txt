@@ -1,0 +1,52 @@
+@@CLASS:
+
+@NAME				:String
+
+@METHOD.Construct	:
+#if##caller##is not##null##then#
+	#caller# = ""
+#else if##params##count##is##0##then#
+	""
+#else#
+	#param1#
+#end if#
+@METHOD.Destruct	:#caller# = ""
+@METHOD.=			:
+#if##param1##last##output##is not##String##then#
+	#caller# = ("" + (#param1#))
+#else#
+	#caller# = #param1#
+#end if#
+@METHOD.+			:
+#if##param1##last##output##is not##String##then#
+	#caller# + ("" + (#param1#))
+#else#
+	#caller# + (#param1#)
+#end if#
+@METHOD.+=			:
+#if##param1##last##output##is##Byte##then#
+	#caller# += #param1#
+#else if##param1##last##output##is not##String##then#
+	#caller# += ("" + (#param1#))
+#else#
+	#caller# += (#param1#)
+#end if#
+@METHOD.==			:(#caller# === (#param1#))
+@METHOD.!=			:(#caller# !== (#param1#))
+@METHOD.[			:(((#caller#.at(#param1#) % 256) + 256) % 256)
+@METHOD.At			:(((#caller#.at(#param1#) % 256) + 256) % 256)
+@METHOD.StrAt		:#caller#.substr(#param1#, #param2#)
+@METHOD.Find		:#caller#.search(#param1#)
+@METHOD.ToString	:#caller#
+@METHOD.Substr		:#caller#.substr(#params#)
+@METHOD.Length		:#caller#.length
+@METHOD.Split		:u#caller#.split(#param1#)
+@METHOD.ToNumber	:(1.0 + parseInt(#caller#))
+@METHOD.ToBool		:(parseInt(#caller#) === 0)
+@METHOD.ToByte		:(((parseInt(#caller#) % 256) + 256) % 256)
+@METHOD.ToShort		:(((parseInt(#caller#) % 65536) + 65536) % 65536)
+@METHOD.ToInt		:(((parseInt(#caller#) % 2147483648) + 2147483648) % 2147483648)
+@METHOD.ToFloat		:(1.0 + parseInt(#caller#))
+
+
+

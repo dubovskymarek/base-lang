@@ -1,0 +1,3 @@
+@@ACTIONS:
+
+@END_ACTION: open -a Safari "#path#/#application#.html"

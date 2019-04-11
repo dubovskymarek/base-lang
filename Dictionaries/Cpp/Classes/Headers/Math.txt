@@ -1,0 +1,31 @@
+@@CLASS:
+
+@NAME				:Math
+
+@CLASS				:
+\#pragma once
+
+\#include <cmath>
+
+\#ifndef UCHAR
+\#define UCHAR unsigned char
+\#endif
+
+using namespace std;
+
+#used classes#
+
+\#include "#parent path##parent name#.h"\n
+\#include "utilities.h"\n
+
+class #class# : public #parent#
+{
+public:
+	#methods#
+
+	#members#
+	
+	static #class#* s_instance;
+	static #class#* s_Instance();
+};
+

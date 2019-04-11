@@ -1,0 +1,4 @@
+@@CLASS:
+
+@NAME				:Bool
+@CLASS_NAME			:bool

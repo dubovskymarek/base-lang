@@ -1,0 +1,274 @@
+
+@@GENERAL:
+
+@ONE_FILE_FOR_ONE_CLASS:NO
+
+
+@OUTPUT_FILE:#path#/#name#.html
+
+@MAIN				:
+<html>
+	<head>
+		<script>
+		
+			#code#
+			#code1#
+			#code1#
+			
+			var _body = null;
+			
+			var app = null;
+			
+			function main()
+			{
+				_body = document.getElementById("_body");
+				app = new #class#();
+			}
+			
+		</script>
+	</head>
+
+	<body id="_body" onload="main();" style="font-family: Courier New;">
+	</body>
+</html>
+
+@CLASS				:
+#if##class##is##Math##then#
+#else if##class##is##app class##then#
+	function #class#()
+	{
+		this._type = 0;
+		#members#
+		
+		this._#class#_Construct();
+	}
+	
+	#methods#
+#else#
+	function #class#()
+	{
+		this._type = 0;
+		#members#
+		
+		this._#class#_Construct();
+	}
+	
+	#methods#
+	
+#end if#
+
+@CLASS1				:
+#if##class##is##Math##then#
+#else#
+	#if##parent##is not##null##then#
+
+	for(var p in #parent#.prototype)
+	{
+		eval("#class#.prototype." + p + "=#parent#.prototype." + p + "");
+	}
+	#end if#
+#end if#
+
+@VOID				:
+@USED				:
+@CLASS_NAME			:#path#_#class#
+@MEMBER				:
+#if##class##is##app class##then#
+	this.#member# = null;
+#end if#
+@METHOD				:
+#if##method##is##Construct##then#
+	#if##parent##is##null##then#
+		#class#.prototype._#class#_Construct = function(#inputs#)
+		{
+			this._type = #class id#;
+			#code#
+		}
+	#else#
+		#class#.prototype._#class#_Construct = function(#inputs#)
+		{
+			this._type = #class id#;
+			this._#parent#_Construct();
+			#code#
+		}
+	#end if#
+#else if##method##is##Destruct##then#
+	#if##parent##is##null##then#
+		#class#.prototype._#class#_Destruct = function()
+		{
+			#code#
+			this._type = 0;
+		}
+	#else#
+		#class#.prototype._#class#_Destruct = function()
+		{
+			#code#
+			this.#parent#_Destruct();
+			this._type = 0;
+		}
+	#end if#
+#else#
+	#class#.prototype.#method# = function(#inputs#)
+	{
+		#code#
+	}
+#end if#
+
+@INPUT				:\ 
+#if##input##is not##first##then#\
+	, \
+#end if#\
+#input#\
+
+@PARAM				:\ 
+#if##param##is not##first##then#\
+	, \
+#end if#\
+#param#\
+
+@CONST_STRING		:"#value#"
+@CONST_NUM			:#value#
+@CONST_NULL			:NULL
+@CONST_YES			:true
+@CONST_NO			:false\
+
+@COMMAND			:
+#if##is##keyword##then#
+	#code#
+#else#
+	#code#;
+#end if#
+
+@COMMAND_PART		:
+#if##caller##output##is##struct##then#
+	#if##is##method##then#
+		#if##is##=&##then#
+			#if##param1##is##null##then#
+				#if##caller##output##has parent##Number##then#
+					#caller# = 0
+				#else if##caller##output##is##Float##then#
+					#caller# = 0.0
+				#else if##caller##output##is##String##then#
+					#caller# = ""
+				#end if#
+			#else#
+				#caller# = #param1#
+			#end if#
+		#else if##is##operator##then#
+			#caller# #operator# (#param1#)
+		#else if##method##is##Destruct##then#
+		#else#
+			#caller#.#code#(#params#)
+		#end if#
+	#else if##is##namespace##then#
+		#caller#
+	#else#
+		#caller#.#code#
+	#end if#
+#else#
+	#if##is##method##then#
+		#if##is##=&##then#
+			#if##param1##is##null##then#
+				#caller# = null
+			#else#
+				#caller# = #param1#
+			#end if#
+		#else if##is##==##and##param1##is##null##then#
+			#caller# === null
+		#else if##is##!=##and##param1##is##null##then#
+			#caller# !== null
+		#else if##is##Construct##then#
+			#if##output##is##struct##then#
+				#if##params##count##is##0##then#
+					#caller#0
+				#else#
+					#caller##param1#
+				#end if#
+			#else if##caller##is##base##then#
+			#else#
+				#caller#new #output#(#params#)
+			#end if#
+		#else if##is##Destruct##then#
+			#if##caller##is not##base##then#
+				delete #caller#
+			#end if#
+		#else if##caller##is##declared##and##is##=##then#
+			#caller# = #params#
+		#else if##caller####is##base##then#
+			#parent#::#code#(#params#)
+		#else#
+			#caller#.#code#(#params#)
+		#end if#
+	#else if##is##namespace##then#
+		#caller#
+	#else if##caller##is##null##then#
+		#if##is##object##and##is##declared##then#
+			#if##is##static##then#
+				#if##output##is not##Math##then#
+					#output#_singleton
+				#end if#
+			#else#
+				var #code#
+			#end if#
+		#else#
+			#code#
+		#end if#
+	#else#
+		#if##current class##is##app class##and##caller##is##this##then#
+			#code#
+		#else#
+			#caller#.#code#
+		#end if#
+	#end if#
+#end if#\
+
+@KEYWORD_IF			:
+#if##param1##last##is##method##and##param1##last##caller##output##is##struct##then#
+	if#param1#
+	{
+		#code#
+	}
+#else#
+	if(#param1#)
+	{
+		#code#
+	}
+#end if#
+
+@KEYWORD_ELSEIF		:
+#if##param1##last##is##method##and##param1##last##caller##output##is##struct##then#
+	else if#param1#
+	{
+		#code#
+	}
+#else#
+	else if(#param1#)
+	{
+		#code#
+	}
+#end if#
+
+@KEYWORD_ELSE		:
+else
+{
+	#code#
+}
+
+@KEYWORD_WHILE		:
+#if##param1##last##is##method##and##param1##last##caller##output##is##struct##then#
+	while#params#
+	{
+		#code#
+	}
+#else#
+	while(#params#)
+	{
+		#code#
+	}
+#end if#
+
+@KEYWORD_RETURN		:return #param1#;\n
+@KEYWORD_BREAK		:break;\n
+@KEYWORD_CONTINUE	:continue;\n
+@KEYWORD_IS			:(#caller# !== null && #caller#._type === #class id#)
+@KEYWORD_CENZURE	:return false;\n

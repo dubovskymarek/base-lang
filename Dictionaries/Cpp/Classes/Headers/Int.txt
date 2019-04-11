@@ -1,0 +1,4 @@
+@@CLASS:
+
+@NAME				:Int
+@CLASS_NAME			:int

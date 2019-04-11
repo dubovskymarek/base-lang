@@ -1,0 +1,31 @@
+@@CLASS:
+
+@NAME				:File
+
+@CLASS				:
+\#pragma once
+
+\#include <stdio.h>
+
+#used classes#
+
+\#include "#parent path##parent name#.h"\n
+\#include "utilities.h"\n
+
+class #class# : public #parent#
+{
+public:
+	#methods#
+
+	#members#
+	
+	FILE* file;
+	
+	static #class#* s_instance;
+	static #class#* s_Instance();
+};
+
+@MEMBER			:
+#if##member##is not##detectGroup##then#
+	#general#
+#end if#

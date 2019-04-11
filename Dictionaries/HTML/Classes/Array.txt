@@ -1,0 +1,62 @@
+@@CLASS:
+
+@NAME				:Array
+
+@METHOD.Construct	:
+#class#.prototype._#class#_Construct = function(#inputs#)
+{
+	this._items = [];
+	this._type = #class id#;
+	this._#parent#_Construct();
+}
+
+@METHOD.Destruct	:
+#class#.prototype._#class#_Destruct = function()
+{
+	#code#
+	this.#parent#_Destruct();
+	this._type = 0;
+}
+
+@METHOD.AddPrivate			:
+#class#.prototype.#method# = function(#inputs#)
+{
+	this._items.push(item);
+}
+
+@METHOD.InsertPrivate		:
+#class#.prototype.#method# = function(#inputs#)
+{
+	this._items.splice(index - 1, 0, item);
+}
+
+@METHOD.RemoveAtPrivate		:
+#class#.prototype.#method# = function(#inputs#)
+{
+	this._items.splice(index - 1, 1);
+}
+
+@METHOD.SetPrivate		:
+#class#.prototype.#method# = function(#inputs#)
+{
+	this._items[index - 1] = item;
+}
+
+@METHOD.Item		:
+#class#.prototype.#method# = function(#inputs#)
+{
+	return this._items[index - 1];
+}
+
+@METHOD.Index		:
+#class#.prototype.#method# = function(#inputs#)
+{
+	return this._items.indexOf(item);
+}
+
+@METHOD.Count			:
+#class#.prototype.#method# = function()
+{
+	return this._items.length;
+}
+

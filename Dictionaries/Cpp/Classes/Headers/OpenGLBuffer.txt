@@ -1,0 +1,34 @@
+@@CLASS:
+
+@NAME				:OpenGL.Buffer
+
+@CLASS				:
+\#pragma once
+
+\#ifndef UCHAR
+\#define UCHAR unsigned char
+\#endif
+
+\#include <string>
+\#include <vector>
+
+using namespace std;
+
+#used classes#
+
+\#include "#parent path##parent name#.h"\n
+\#include "utilities.h"\n
+
+class #class# : public #parent#
+{
+public:
+	#methods#
+
+	#members#
+	
+	unsigned char* data;
+	int dataSize;
+	
+	static #class#* s_instance;
+	static #class#* s_Instance();
+};

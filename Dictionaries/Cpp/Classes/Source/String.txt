@@ -1,0 +1,55 @@
+@@CLASS:
+
+@NAME				:String
+@CLASS_NAME			:string
+
+@METHOD.Construct	:
+#if##caller##is not##null##then#
+	#caller# = ""
+#else if##params##count##is##0##then#
+	""
+#else#
+	#param1#
+#end if#
+@METHOD.Destruct	:#caller# = ""
+@METHOD.=			:
+#if##param1##last##output##is not##String##then#
+	#caller# = to_string(#param1#)
+#else#
+	#caller# = #param1#
+#end if#
+@METHOD.+			:
+#if##param1##last##output##is not##String##then#
+	#caller# + to_string(#param1#)
+#else#
+	#caller# + (#param1#)
+#end if#
+@METHOD.+=			:
+#if##param1##last##output##is##Byte##then#
+	#caller# += #param1#
+#else if##param1##last##output##is not##String##then#
+	#caller# += to_string(#param1#)
+#else#
+	#caller# += (#param1#)
+#end if#
+@METHOD.==			:(#caller#.compare(#param1#) == 0)
+@METHOD.!=			:(#caller#.compare(#param1#) != 0)
+@METHOD.[			:(UCHAR)#caller#.at(#param1#)
+@METHOD.At			:(UCHAR)#caller#.at(#param1#)
+@METHOD.StrAt		:#caller#.substr(#param1#, 1)
+@METHOD.Find		:#caller#.find(#param1#)
+@METHOD.FindLast	:#caller#.rfind(#param1#)
+@METHOD.ToString	:#caller#
+@METHOD.ToArray		:ToArray(#caller#)
+@METHOD.Substr		:#caller#.substr(#params#)
+@METHOD.Length		:#caller#.length()
+@METHOD.Split		:ulitities_split(#caller#, #param1#)
+@METHOD.ToNumber	:(int)atoi((#caller#).c_str())
+@METHOD.ToBool		:(bool)atoi((#caller#).c_str())
+@METHOD.ToByte		:(UCHAR)atoi((#caller#).c_str())
+@METHOD.ToInt		:(int)atoi((#caller#).c_str())
+@METHOD.ToShort		:(short)atoi((#caller#).c_str())
+@METHOD.ToFloat		:(float)atof((#caller#).c_str())
+
+
+

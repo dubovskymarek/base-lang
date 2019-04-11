@@ -1,0 +1,4 @@
+@@CLASS:
+
+@NAME				:Short
+@CLASS_NAME			:short

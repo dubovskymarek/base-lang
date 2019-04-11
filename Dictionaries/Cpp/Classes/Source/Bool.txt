@@ -1,0 +1,30 @@
+@@CLASS:
+
+@NAME				:Bool
+@CLASS_NAME			:bool
+
+@METHOD.Construct	:
+#if##caller##is not##null##then#
+	#caller# = false
+#else if##params##count##is##0##then#
+	false
+#else#
+	#param1#
+#end if#
+@METHOD.Destruct	:#caller# = false
+@METHOD.=			:#caller# = #param1#
+@METHOD.&=			:#caller# &= #param1#
+@METHOD.|=			:#caller# |= #param1#
+@METHOD.Switch		:#caller# != #parent#
+@METHOD.==			:(#caller# == #param1#)
+@METHOD.!=			:(#caller# != #param1#)
+@METHOD.&&			:(#caller# && #param1#)
+@METHOD.||			:(#caller# || #param1#)
+@METHOD.ToByte		:(UCHAR)(#caller#)
+@METHOD.ToInt		:(int)(#caller#)
+@METHOD.ToShort		:(short)(#caller#)
+@METHOD.ToFloat		:(float)(#caller#)
+@METHOD.ToString	:to_string(#caller#)
+
+
+

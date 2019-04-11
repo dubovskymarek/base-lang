@@ -1,0 +1,42 @@
+@@CLASS:
+
+@NAME				:Array
+
+@CLASS				:
+\#pragma once
+
+\#ifndef UCHAR
+\#define UCHAR unsigned char
+\#endif
+
+\#include <string>
+\#include <vector>
+
+using namespace std;
+
+#used classes#
+
+\#include "#parent path##parent name#.h"\n
+\#include "utilities.h"\n
+
+class #class# : public #parent#
+{
+public:
+	#methods#
+
+	#members#
+	
+#if##optional class1##is##struct##then#
+	vector<#optional class1#>* items;
+#else#
+	vector<#optional class1#*>* items;
+#end if#
+	
+	static #class#* s_instance;
+	static #class#* s_Instance();
+};
+
+@MEMBER			:
+#if##member##is not##detectGroup##then#
+	#general#
+#end if#

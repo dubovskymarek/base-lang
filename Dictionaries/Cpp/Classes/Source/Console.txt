@@ -1,0 +1,19 @@
+@@CLASS:
+
+@NAME				:Console
+@CLASS_NAME			:Console
+
+@METHOD.=			:
+void #class#::#method#(#inputs#)
+{
+	system("cls");
+	cout << value;
+    fflush(stdout);
+}
+
+@METHOD.+=			:
+void #class#::#method#(#inputs#)
+{
+	cout << value;
+    fflush(stdout);
+}

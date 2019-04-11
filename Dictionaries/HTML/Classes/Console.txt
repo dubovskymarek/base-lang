@@ -1,0 +1,30 @@
+@@CLASS:
+
+@NAME				:Console
+		
+@METHOD.Construct	:
+#class#.prototype._#class#_Construct = function(#inputs#)
+{
+	this._type = #class id#;
+	this._#parent#_Construct();
+	#code#
+	this.Endl = "<br/>";
+}
+		
+@METHOD.=			:
+#class#.prototype.#method# = function(#inputs#)
+{
+	_body.innerHTML = #param1#;
+}
+
+@METHOD.+=			:
+#class#.prototype.#method# = function(#inputs#)
+{
+	_body.innerHTML += #param1#;
+}
+
+@METHOD.Alert			:
+#class#.prototype.#method# = function(#inputs#)
+{
+	alert(#param1#);
+}

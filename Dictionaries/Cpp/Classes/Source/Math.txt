@@ -1,0 +1,230 @@
+@@CLASS:
+
+@NAME				:Math
+
+@CLASS				:
+\#include "#path#/#name#.h"
+
+using namespace std;
+
+#used classes#
+
+#class#* #class#::s_instance = NULL;
+#class#* #class#::s_Instance()
+{
+	if(s_instance == NULL)
+		s_instance = new #class#();
+	return s_instance;
+}
+
+#methods#
+
+@METHOD.Byte1		:
+#output# #class#::#method#(int value)
+{
+	return (#output#)((value >> 24) & 0xff);
+}
+
+@METHOD.Byte2		:
+#output# #class#::#method#(int value)
+{
+	return (#output#)((value >> 16) & 0xff);
+}
+
+@METHOD.Byte3		:
+#output# #class#::#method#(int value)
+{
+	return (#output#)((value >> 8) & 0xff);
+}
+
+@METHOD.Byte4		:
+#output# #class#::#method#(int value)
+{
+	return (#output#)((value >> 0) & 0xff);
+}
+
+@METHOD.Short1		:
+#output# #class#::#method#(int value)
+{
+	return (#output#)((value >> 16) & 0xffff);
+}
+
+@METHOD.Short2		:
+#output# #class#::#method#(int value)
+{
+	return (#output#)((value >> 0) & 0xffff);
+}
+
+@METHOD.ShortFromBytes	:
+#output# #class#::#method#(UCHAR byte1, UCHAR byte2)
+{
+	return (((#output#)byte1) << 8) | ((#output#)byte2);
+}
+
+@METHOD.IntFrom2Bytes	:
+#output# #class#::#method#(UCHAR byte1, UCHAR byte2)
+{
+	return (((#output#)byte1) << 8) | ((#output#)byte2);
+}
+
+@METHOD.IntFromBytes	:
+#output# #class#::#method#(UCHAR byte1, UCHAR byte2, UCHAR byte3, UCHAR byte4)
+{
+	return (((#output#)byte1) << 24) | (((#output#)byte1) << 16) | (((#output#)byte1) << 8) | ((#output#)byte2);
+}
+
+@METHOD.GetIntByChangeByte	:
+#output# #class#::#method#(int number, int index, UCHAR value)
+{
+	if(index == 1)
+	{
+		return (number & 0x00ffffff) | (((#output#)value) << 24);
+	}
+	else if(index == 2)
+	{
+		return (number & 0xff00ffff) | (((#output#)value) << 16);
+	}
+	else if(index == 3)
+	{
+		return (number & 0xffff00ff) | (((#output#)value) << 8);
+	}
+	else if(index == 4)
+	{
+		return (number & 0xffffff00) | (((#output#)value) << 0);
+	}
+	else
+	{
+		return value;
+	}
+}
+
+@METHOD.GetIntByChangeShort	:
+#output# #class#::#method#(int number, int index, short value)
+{
+	if(index == 1)
+	{
+		return (number & 0x0000ffff) | (((#output#)value) << 16);
+	}
+	else if(index == 4)
+	{
+		return (number & 0xffff0000) | (((#output#)value) << 0);
+	}
+	else
+	{
+		return value;
+	}
+}
+
+@METHOD.Abs				:
+#output# #class#::#method#(float value)
+{
+	return value < 0 ? -value : value;
+}
+
+@METHOD.Acos			:
+#output# #class#::#method#(float value)
+{
+	return acos(value);
+}
+
+@METHOD.Asin			:
+#output# #class#::#method#(float value)
+{
+	return asin(value);
+}
+
+@METHOD.Atan			:
+#output# #class#::#method#(float value)
+{
+	return atan(value);
+}
+
+@METHOD.Atan2			:
+#output# #class#::#method#(float value1, float value2)
+{
+	return atan2(value1, value2);
+}
+
+@METHOD.Ceil			:
+#output# #class#::#method#(float value)
+{
+	return ceil(value);
+}
+
+@METHOD.Cos				:
+#output# #class#::#method#(float value)
+{
+	return cos(value);
+}
+
+@METHOD.Exp				:
+#output# #class#::#method#(float value)
+{
+	return exp(value);
+}
+
+@METHOD.Floor			:
+#output# #class#::#method#(float value)
+{
+	return ceil(value);
+}
+
+@METHOD.Log				:
+#output# #class#::#method#(float value)
+{
+	return log(value) / log(value);
+}
+
+@METHOD.Max				:
+#output# #class#::#method#(float value1, float value2)
+{
+	return max(value1, value2);
+}
+
+@METHOD.Min				:
+#output# #class#::#method#(float value1, float value2)
+{
+	return min(value1, value2);
+}
+
+@METHOD.Pow				:
+#output# #class#::#method#(float value1, float value2)
+{
+	return pow(value1, value2);
+}
+
+@METHOD.Rand			:
+#output# #class#::#method#()
+{
+	return rand();
+}
+
+@METHOD.RandWithNeg		:
+#output# #class#::#method#()
+{
+	return rand() % 2 == 0 ? rand() * -1 : rand();
+}
+
+@METHOD.Round			:
+#output# #class#::#method#(float value)
+{
+	return round(value);
+}
+
+@METHOD.Sin			:
+#output# #class#::#method#(float value)
+{
+	return sin(value);
+}
+
+@METHOD.Sqrt		:
+#output# #class#::#method#(float value)
+{
+	return sqrt(value);
+}
+
+@METHOD.Tan			:
+#output# #class#::#method#(float value)
+{
+	return tan(value);
+}

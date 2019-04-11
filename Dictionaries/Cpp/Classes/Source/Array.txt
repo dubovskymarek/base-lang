@@ -1,0 +1,87 @@
+@@CLASS:
+
+@NAME				:Array
+
+@METHOD.Construct	:
+#class#::#class#(#inputs#) : #parent#()
+{\n
+#if##optional class1##is##struct##then#
+		items = new vector<#optional class1#>();
+#else#
+		items = new vector<#optional class1#*>();
+#end if#
+}
+
+@METHOD.Destruct	:
+#class#::~#class#()
+{\n
+	Clear();
+#if##optional class1##is not##struct##then#
+//		for(vector<#optional class1#*>::iterator iter = items->begin(); iter < items->end(); iter++)
+//		{
+//			*iter = NULL;
+//		}
+#end if#
+//	items->clear();
+	delete items;
+	items = NULL;
+}
+
+@METHOD.AddPrivate			:
+void #class#::#method#(#inputs#)
+{
+	items->push_back(item);
+}
+
+@METHOD.InsertPrivate		:
+#output# #class#::#method#(#inputs#)
+{
+	items->insert(items->begin() + index - 1, item);
+}
+
+@METHOD.RemovePrivate		:
+void #class#::#method#(#inputs#)
+{\n
+	RemoveAt(Index(item));
+}
+
+@METHOD.RemoveAtPrivate		:
+void #class#::#method#(#inputs#)
+{\n
+	items->erase(items->begin() + index - 1);
+}
+
+@METHOD.SetPrivate		:
+void #class#::#method#(#inputs#)
+{\n
+	*(items->begin() + index - 1) = item;
+}
+
+@METHOD.Item		:
+#if##output##is##struct##or##method##output##is##null##then#
+	#output# #class#::#method#(#inputs#)\n
+#else#
+	#output#* #class#::#method#(#inputs#)\n
+#end if#
+{
+	return items->at(index - 1);
+}
+
+@METHOD.Index		:
+#output# #class#::#method#(#inputs#)
+{\n
+#if##optional class1##is##struct##then#
+		vector<#optional class1#>::iterator iter = find(items->begin(), items->end(), item);
+#else#
+		vector<#optional class1#*>::iterator iter = find(items->begin(), items->end(), item);
+#end if#
+	return iter == items->end() ? 0 : (int)(iter - items->begin()) + 1;
+}
+
+
+@METHOD.Count			:
+#output# #class#::#method#(#inputs#)
+{
+	return items->size();
+}
+

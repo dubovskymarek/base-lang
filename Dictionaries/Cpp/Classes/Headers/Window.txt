@@ -1,0 +1,48 @@
+@@CLASS:
+
+@NAME				:GUI.Window
+
+@CLASS				:
+\#pragma once
+
+\#pragma GCC diagnostic ignored "-Wdeprecated"
+
+\#ifndef UCHAR
+\#define UCHAR unsigned char
+\#endif
+
+\#include <string>
+\#include <vector>
+\#include <map>
+
+using namespace std;
+
+#used classes#
+
+\#include <sys/time.h>
+\#include "#parent path##parent name#.h"\n
+\#include "utilities.h"\n
+
+class #class# : public #parent#
+{
+public:
+	#methods#
+
+	#members#
+	
+	static void _OnRender();
+	static void _OnResize(int width, int height);
+	static void _OnClose();
+	static void _OnTimeout(int value);
+	static void _OnMouseMove(int x, int y);
+	static void _OnMouseEvent(int button, int state, int x, int y);
+	static void _OnKeyboard(unsigned char key, int x, int y);
+	
+	int _windowId;
+	long _startTime;
+	static map<int, #class#*> s_windows;
+	
+	static #class#* s_instance;
+	static #class#* s_Instance();
+};
+

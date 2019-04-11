@@ -1,0 +1,33 @@
+@@CLASS:
+
+@NAME				:Math
+
+@METHOD.Byte1		:((#param1# >> 24) & 0xff)
+@METHOD.Byte2		:((#param1# >> 16) & 0xff)
+@METHOD.Byte3		:((#param1# >>  8) & 0xff)
+@METHOD.Byte4		:((#param1# >>  0) & 0xff)
+@METHOD.Short1		:((#param1# >> 16) & 0xffff)
+@METHOD.Short2		:((#param1# >>  0) & 0xffff)
+
+@METHOD.ShortFromBytes	:((#param1#) << 8) | (#param2#)
+@METHOD.IntFrom2Bytes	:((#param1#) << 8) | (#param2#)
+@METHOD.IntFromBytes	:((#param1#) << 24) | ((#param2#) << 16) | ((#param3#) << 8) | (#param4#)
+
+@METHOD.Abs				:Math.abs(#param1#)
+@METHOD.Sin				:Math.sin(#param1#)
+@METHOD.Cos				:Math.cos(#param1#)
+@METHOD.Acos			:Math.acos(#param1#)
+@METHOD.Asin			:Math.asin(#param1#)
+@METHOD.Atan			:Math.atan(#param1#)
+@METHOD.Atan2			:Math.atan2(#param1#, #param2#)
+@METHOD.Ceil			:Math.ceil(#param1#)
+@METHOD.Exp				:Math.exp(#param1#)
+@METHOD.Floor			:Math.floor(#param1#)
+@METHOD.Log				:Math.log(#param1#)
+@METHOD.Max				:Math.max(#param1#, #param2#)
+@METHOD.Min				:Math.min(#param1#, #param2#)
+@METHOD.Pow				:Math.pow(#param1#, #param2#)
+@METHOD.Rand			:Math.rand()
+@METHOD.Round			:Math.round(#param1#)
+@METHOD.Sqrt			:Math.sqrt(#param1#)
+@METHOD.Tan				:Math.tan(#param1#)

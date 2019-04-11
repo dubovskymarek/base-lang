@@ -1,0 +1,45 @@
+@@CLASS:
+
+@NAME				:Byte
+@CLASS_NAME			:UCHAR
+
+@METHOD.Construct	:
+#if##caller##is not##null##then#
+	#caller# = 0
+#else if##params##count##is##0##then#
+	0
+#else#
+	#param1#
+#end if#
+@METHOD.Destruct	:#caller# = 0\
+@METHOD.=			:#caller# = #param1#
+@METHOD.+=			:#caller# += #param1#
+@METHOD.-=			:#caller# -= #param1#
+@METHOD.*=			:#caller# *= #param1#
+@METHOD./=			:#caller# /= #param1#
+@METHOD.&=			:#caller# &= #param1#
+@METHOD.|=			:#caller# |= #param1#
+@METHOD.++			:#caller#++
+@METHOD.--			:#caller#--
+@METHOD.+			:(#caller# + #param1#)
+@METHOD.-			:(#caller# - #param1#)
+@METHOD.*			:(#caller# * #param1#)
+@METHOD./			:(#caller# / #param1#)
+@METHOD.%			:(#caller# % #param1#)
+@METHOD.^			:Math.pow(#caller#, #param1#)
+@METHOD.&			:(#caller# & #param1#)
+@METHOD.|			:(#caller# | #param1#)
+@METHOD.==			:(#caller# == #param1#)
+@METHOD.!=			:(#caller# != #param1#)
+@METHOD.<			:(#caller# < #param1#)
+@METHOD.>			:(#caller# > #param1#)
+@METHOD.<=			:(#caller# <= #param1#)
+@METHOD.>=			:(#caller# >= #param1#)
+@METHOD.Xor			:(#caller# ^ #param1#)
+@METHOD.ToRange		:ToRange(#caller#, #param1#, #param2#)
+@METHOD.ToBinary	:ToBinary(_ToByte(#caller#))
+@METHOD.ToBool		:(bool)(#caller#)
+@METHOD.ToInt		:(int)(#caller#)
+@METHOD.ToShort		:(short)(#caller#)
+@METHOD.ToFloat		:(float)(#caller#)
+@METHOD.ToString	:to_string(#caller#)

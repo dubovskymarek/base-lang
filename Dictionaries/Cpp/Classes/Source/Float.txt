@@ -1,0 +1,41 @@
+@@CLASS:
+
+@NAME				:Float
+@CLASS_NAME			:float
+
+@METHOD.Construct	:
+#if##caller##is not##null##then#
+	#caller# = 0.0f
+#else if##params##count##is##0##then#
+	0.0f
+#else#
+	#param1#
+#end if#
+@METHOD.Destruct	:#caller# = 0.0f
+@METHOD.=			:#caller# = #param1#
+@METHOD.+=			:#caller# += #param1#
+@METHOD.-=			:#caller# -= #param1#
+@METHOD.*=			:#caller# *= #param1#
+@METHOD./=			:#caller# /= #param1#
+@METHOD.+			:(#caller# + #param1#)
+@METHOD.-			:(#caller# - #param1#)
+@METHOD.*			:(#caller# * #param1#)
+@METHOD./			:(#caller# / #param1#)
+@METHOD.^			:Math.pow(#caller#, #param1#)
+@METHOD.==			:(#caller# == #param1#)
+@METHOD.!=			:(#caller# != #param1#)
+@METHOD.<			:(#caller# < #param1#)
+@METHOD.>			:(#caller# > #param1#)
+@METHOD.<=			:(#caller# <= #param1#)
+@METHOD.>=			:(#caller# >= #param1#)
+@METHOD.Sin			:Math.sin(#caller#)
+@METHOD.Cos			:Math.cos(#caller#)
+@METHOD.ToRange		:ToRange(#caller#, #param1#, #param2#)
+@METHOD.ToBool		:(bool)(#caller#)
+@METHOD.ToByte		:(UCHAR)(#caller#)
+@METHOD.ToInt		:(int)(#caller#)
+@METHOD.ToShort		:(short)(#caller#)
+@METHOD.ToString	:to_string(#caller#)
+@MEMBER.Size		:4
+@MEMBER.Min			:FLT_MIN
+@MEMBER.Max			:FLT_MAX
