@@ -30,7 +30,7 @@ Cpp example print output into terminal after compiling process.
 HTML open Safari and print Hello world example
 
 <b>Credits</b><br/>
-Base was written by Marek Dubovsky dubovskymarek@icloud.com<br/>
+"base" compiler was developed by Marek Dubovsky dubovskymarek@icloud.com<br/>
 
 <b>Examples</b><br/>
 <p>Simple hello world app.</p>
